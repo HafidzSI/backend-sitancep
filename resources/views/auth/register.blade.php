@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
   <div class="container">
@@ -9,7 +9,7 @@
 
           <div class="card-body">
 
-            @if(Session::has('error'))              
+            @if(Session::has('error'))
               <div class="alert alert-danger alert-dismissible fade show">
                 {{ Session::get('error') }}
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -68,6 +68,18 @@
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                       </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="tipe" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                        <div class="col-md-6">
+                            <select name="tipe" id="tipe" class="form-control">
+                                <option value="">Pilih Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="pekerja">Pekerja Lapangan</option>
+                            </select>
+                          </div>
+                        </div>
 
                     <div class="form-group row mb-0">
                       <div class="col-md-6 offset-md-4">

@@ -31,7 +31,10 @@ class HomeController extends Controller
       // FirebaseAuth.getInstance().getCurrentUser();
         $uid = Session::get('uid');
         $user = app('firebase.auth')->getUser($uid);
-        return view('home');
+
+        $data = explode('-',$user->displayName);
+        $role = $data[0];
+        return view('home',compact('role'));
         // return $user;
     }
 }

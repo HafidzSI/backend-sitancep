@@ -55,10 +55,11 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'emailVerified' => false,
             'password' => $request->input('password'),
-            'displayName' => $request->input('name'),
+            'displayName' => $request->input('tipe').'-'.$request->input('name'),
             'disabled' => false,
          ];
          $createdUser = $this->auth->createUser($userProperties);
+
          return redirect()->route('login');
        } catch (FirebaseException $e) {
           Session::flash('error', $e->getMessage());

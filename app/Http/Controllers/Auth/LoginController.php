@@ -53,8 +53,12 @@ class LoginController extends Controller
           $user = new User($signInResult->data());
 
           //uid Session
+          $data = explode('-',$user->displayName);
+          $role = $data[0];
+
           $loginuid = $signInResult->firebaseUserId();
           Session::put('uid',$loginuid);
+          Session::put('role',$role);
 
           $result = Auth::login($user);
           return redirect($this->redirectPath());
