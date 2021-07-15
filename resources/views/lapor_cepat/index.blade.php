@@ -50,7 +50,7 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var db  = firebase.firestore();
+// var db  = firebase.firestore();
 
 // db.collection("Lapor_cepat").where("status","==","2")
 //     .get()

@@ -50,7 +50,6 @@
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
 
   firebase.database().ref('Lapor/').on('value', function (snapshot) {
     var value = snapshot.val();

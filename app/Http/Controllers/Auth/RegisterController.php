@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
      protected $redirectTo = RouteServiceProvider::HOME;
     public function __construct(FirebaseAuth $auth) {
-       $this->middleware('guest');
+       $this->middleware('auth');
        $this->auth = $auth;
     }
     protected function validator(array $data) {

@@ -51,36 +51,36 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var db  = firebase.firestore();
+// var db  = firebase.firestore();
 
-db.collection("Lapor").where("status","==","2")
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(doc);
-        })
-    })
+// db.collection("Lapor").where("status","==","2")
+//     .get()
+//     .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => {
+//             console.log(doc);
+//         })
+//     })
 
-// firebase.database().ref('Lapor/').on('value', function (snapshot) {
-//     var value = snapshot.val();
-//     var htmls = [];
-//     $.each(value, function (index, value) {
-//         let no = 1;
-//         if (value) {
-//             htmls.push('<tr>\
-//             <td>' + value.nama_pelapor + '</td>\
-//             <td>' + value.alamat + '</td>\
-//             <td><span class="fas fa-globe-europe"></span></span> ' + value.lokasi_jalan_rusak + '</td>\
-//             <td><span class="fas fa-globe-europe"></span></span> ' + value.petunjuk_lokasi + '</td>\
-//             <td><button id="update" data-toggle="modal" data-target="#update-modal" class="btn btn-info updateData" data-id="' + index + '">Diterima</button>\
-//             <button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeData" data-id="' + index + '">Ditolak</button>\
-//         </tr>');
-//         }
-//         no = no + 1
-//         lastIndex = index;
-//     });
-//     $('#tbody').html(htmls);
-// });
+firebase.database().ref('Lapor/').on('value', function (snapshot) {
+    var value = snapshot.val();
+    var htmls = [];
+    $.each(value, function (index, value) {
+        let no = 1;
+        if (value) {
+            htmls.push('<tr>\
+            <td>' + value.nama_pelapor + '</td>\
+            <td>' + value.alamat + '</td>\
+            <td><span class="fas fa-globe-europe"></span></span> ' + value.lokasi_jalan_rusak + '</td>\
+            <td><span class="fas fa-globe-europe"></span></span> ' + value.petunjuk_lokasi + '</td>\
+            <td><button id="update" data-toggle="modal" data-target="#update-modal" class="btn btn-info updateData" data-id="' + index + '">Diterima</button>\
+            <button data-toggle="modal" data-target="#remove-modal" class="btn btn-danger removeData" data-id="' + index + '">Ditolak</button>\
+        </tr>');
+        }
+        no = no + 1
+        lastIndex = index;
+    });
+    $('#tbody').html(htmls);
+});
 
 $(document).on('click','#update', function(){
     var id = $(this).data("id");
